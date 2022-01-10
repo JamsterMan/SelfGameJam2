@@ -618,7 +618,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1025554051}
-  startTimeSec: 60
+  startTimeSec: 0
+  startTimeMin: 5
+  stopTimer: 0
 --- !u!1 &1025554049
 GameObject:
   m_ObjectHideFlags: 0
