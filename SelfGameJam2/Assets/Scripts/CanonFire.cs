@@ -7,13 +7,6 @@ public class CanonFire : MonoBehaviour
 
     public Rigidbody2D projectile;
     public float projectileSpeed;
-    public bool fire;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        fire = true;
-    }
 
     public void FireProjectile()
     {

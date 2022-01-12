@@ -21,7 +21,8 @@ public class GameController : MonoBehaviour
         if(Mathf.FloorToInt( timer) > lastSec)
         {
             lastSec++;
-            FireWave(lastSec);
+            //Random.Range(1,2);
+            FireWave2(lastSec);
         }
     }
 
@@ -29,14 +30,32 @@ public class GameController : MonoBehaviour
     {
         if (time % 2 == 0)
         {
-            for (int i = 0; i < canons.Length; i = i + 2)
+            for (int i = 0; i < canons.Length; i += 2)
             {
                 canons[i].FireProjectile();
             }
         }
         else
         {
-            for (int i = 1; i < canons.Length; i = i + 2)
+            for (int i = 1; i < canons.Length; i += 2)
+            {
+                canons[i].FireProjectile();
+            }
+        }
+    }
+
+    public void FireWave2(int time)
+    {
+        if (time % 2 == 0)
+        {
+            for (int i = 0; i < Mathf.FloorToInt(canons.Length / 2f); i++)
+            {
+                canons[i].FireProjectile();
+            }
+        }
+        else
+        {
+            for (int i = Mathf.FloorToInt(canons.Length/2f); i < canons.Length; i++)
             {
                 canons[i].FireProjectile();
             }
