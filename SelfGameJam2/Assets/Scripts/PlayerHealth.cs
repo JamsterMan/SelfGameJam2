@@ -18,13 +18,21 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(health <= 0)
+        {
+            Debug.Log("GameOver");
+            Destroy(gameObject);
+        }
     }
 
     public void HitPlayer()
     {
-        Debug.Log("player Hit");
-        health--;
-        healthImage.sprite = healthImages[health-1];
+        if (health > 0)
+        {
+            Debug.Log("player Hit");
+
+            health--;
+            healthImage.sprite = healthImages[health];
+        }
     }
 }

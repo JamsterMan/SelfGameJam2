@@ -7,6 +7,7 @@ public class GameTimer : MonoBehaviour
 {
     //public Text text;
     public TMP_Text text;
+    public GameController gm;
 
     public int startTimeSec;
     public int startTimeMin;
@@ -46,30 +47,37 @@ public class GameTimer : MonoBehaviour
             if (Mathf.FloorToInt(timer) > secTimePass)
             {
                 secTimePass++;
-                secTime++;
-                if (startTimeMin - minTime == 0 && startTimeSec - secTime == 0)//Check if Count down is at 0:00
-                {
-                    Debug.Log("GameWon");
-                    stopTimer = true;
-                }
-                else
-                {
-                    if (startTimeSec - secTime <= 0)
-                    {
-                        secTime = startTimeSec - 59;
-                        minTime++;
-                    }
-                }
-                //formatting timer text
-                if (startTimeSec - secTime < 10)
-                {
-                    text.text = (startTimeMin - minTime) + ":0" + (startTimeSec - secTime);
-                }
-                else
-                {
-                    text.text = (startTimeMin - minTime) + ":" + (startTimeSec - secTime);
-                }
+                UpdateTimerUI();
+
+                gm.FireCanons(secTimePass);
             }
+        }
+    }
+
+    private void UpdateTimerUI()
+    {
+        secTime++;
+        if (startTimeMin - minTime == 0 && startTimeSec - secTime == 0)//Check if Count down is at 0:00
+        {
+            Debug.Log("GameWon");
+            stopTimer = true;
+        }
+        else
+        {
+            if (startTimeSec - secTime <= 0)
+            {
+                secTime = startTimeSec - 59;
+                minTime++;
+            }
+        }
+        //formatting timer text
+        if (startTimeSec - secTime < 10)
+        {
+            text.text = (startTimeMin - minTime) + ":0" + (startTimeSec - secTime);
+        }
+        else
+        {
+            text.text = (startTimeMin - minTime) + ":" + (startTimeSec - secTime);
         }
     }
 

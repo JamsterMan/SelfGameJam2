@@ -4,25 +4,29 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public int WaveChangeTime;
     public CanonFire[] canons;
-    private float timer;
-    private int lastSec;
+    private int waveFire = 1;
 
-    // Start is called before the first frame update
-    void Start()
+    public void FireCanons(int time)
     {
-        timer = 0;
-        lastSec = -1;
-    }
-
-    private void Update()
-    {
-        timer += Time.deltaTime;
-        if(Mathf.FloorToInt( timer) > lastSec)
+        if(time%WaveChangeTime == 0)
         {
-            lastSec++;
-            //Random.Range(1,2);
-            FireWave2(lastSec);
+            waveFire = Random.Range(1, 3);//upper bound is exclusive, lower bound is inclusive
+            Debug.Log(waveFire);
+        }
+
+        switch (waveFire)
+        {
+            case 1:
+                FireWave(time);
+                break;
+            case 2:
+                FireWave2(time);
+                break;
+            default:
+                FireWave(time);
+                break;
         }
     }
 
