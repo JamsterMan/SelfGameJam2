@@ -11,9 +11,9 @@ public class GameController : MonoBehaviour
 
     public void FireCanons(int time)
     {
-        /*if(time%WaveChangeTime == 0)
+        if(time%WaveChangeTime == 0)
         {
-            waveFire = Random.Range(1, 3);//upper bound is exclusive, lower bound is inclusive
+            waveFire = Random.Range(1, 4);//upper bound is exclusive, lower bound is inclusive
             Debug.Log(waveFire);
         }
 
@@ -25,11 +25,14 @@ public class GameController : MonoBehaviour
             case 2:
                 FireWave2(time);
                 break;
+            case 3:
+                FireWave3(time);
+                break;
             default:
                 FireWave(time);
                 break;
-        }*/
-        FireWave3(time);
+        }
+        //FireWave3(time);
     }
 
     private void FireWave(int time)
@@ -57,8 +60,13 @@ public class GameController : MonoBehaviour
 
     private void FireWave3(int time)
     {
-        canonControl.FireEverNthCanons(time%3, 3);//time is always increasing so time%4 fixes it to be only 0,1,2,or 3
+        canonControl.FireEverNthCanons(time % 3, 3);//time is always increasing so time%4 fixes it to be only 0,1,2,or 3
     }
 
+    private void FireWave4(int time)
+    {
+        canonControl.FireEverNthCanons(time % 3, 6);
+        //then fire cannon from sides
+    }
 
 }
