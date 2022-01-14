@@ -29,8 +29,6 @@ public class PlayerHealth : MonoBehaviour
     {
         if (health > 0)
         {
-            Debug.Log("player Hit");
-
             health--;
             healthImage.sprite = healthImages[health];
         }

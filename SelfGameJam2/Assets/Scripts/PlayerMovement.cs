@@ -5,16 +5,17 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    [Range(0.05f,0.3f)]
-    public float smoothMove = 0.2f;
 
     public float playerHorizontalUpperBound;
     public float playerHorizontalLowerBound;
     public float playerVerticalUpperBound;
     public float playerVerticalLowerBound;
 
-    private Vector2 velocity = Vector2.zero;
+    public Animator playerAnimator;
+
     private Rigidbody2D rb;
+
+    private Vector2 movement;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +26,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        float verticalMove = Input.GetAxisRaw("Vertical") * moveSpeed;
+        movement.x = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        movement.y = Input.GetAxisRaw("Vertical") * moveSpeed;
 
-        rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(horizontalMove, verticalMove), ref velocity, smoothMove);
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
+
+        playerAnimator.SetFloat("Horizontal", movement.x);
+        playerAnimator.SetFloat("Vertical", movement.y);
 
         Vector3 pos = transform.position;
 

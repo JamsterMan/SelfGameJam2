@@ -49,7 +49,7 @@ public class GameTimer : MonoBehaviour
                 secTimePass++;
                 UpdateTimerUI();
 
-                gm.FireCanons(secTimePass);
+                gm.FireCanons(secTimePass - 1);
             }
         }
     }

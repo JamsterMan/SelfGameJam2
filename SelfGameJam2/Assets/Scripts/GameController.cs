@@ -8,13 +8,13 @@ public class GameController : MonoBehaviour
     public CanonFire[] canons;
     public CanonController canonControl;
     private int waveFire = 1;
+    private readonly int maxFireWaves = 5;
 
     public void FireCanons(int time)
     {
         if(time%WaveChangeTime == 0)
         {
-            waveFire = Random.Range(1, 4);//upper bound is exclusive, lower bound is inclusive
-            Debug.Log(waveFire);
+            waveFire = Random.Range(1, maxFireWaves);//upper bound is exclusive, lower bound is inclusive
         }
 
         switch (waveFire)
@@ -28,11 +28,13 @@ public class GameController : MonoBehaviour
             case 3:
                 FireWave3(time);
                 break;
+            case 4:
+                FireWave4(time);
+                break;
             default:
                 FireWave(time);
                 break;
         }
-        //FireWave3(time);
     }
 
     private void FireWave(int time)
@@ -64,6 +66,12 @@ public class GameController : MonoBehaviour
     }
 
     private void FireWave4(int time)
+    {
+        canonControl.ReverseFireEverNthCanons(time%20,5);
+        canonControl.FireEverNthCanons(time%20,5);
+    }
+
+    private void FireWave5(int time)
     {
         canonControl.FireEverNthCanons(time % 3, 6);
         //then fire cannon from sides

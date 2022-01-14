@@ -49,4 +49,11 @@ public class CanonController : MonoBehaviour
             canons[i].FireProjectile();
         }
     }
+    public void ReverseFireEverNthCanons(int start, int count)
+    {
+        for (int i = canons.Length-1-start; i >= 0; i -= count)
+        {
+            canons[i].FireProjectile();
+        }
+    }
 }
