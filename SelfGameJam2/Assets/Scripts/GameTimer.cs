@@ -25,7 +25,7 @@ public class GameTimer : MonoBehaviour
         timer = 0;
         secTimePass = 0;
         minTime = 0;
-        secTime = 0;//-1*(startTimeSec % 60);
+        secTime = 0;
         if (startTimeSec % 60 != 0)
         {
             startTimeMin += startTimeSec / 60;
