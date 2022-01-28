@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour
 {
+    public AudioMixer audioMixer;
+
     // Update is called once per frame
     void Update()
     {
@@ -19,9 +22,9 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void LoadSettings()
+    public void ChangeVolume( float vol)
     {
-        Debug.Log("load settings menu");
+        audioMixer.SetFloat("volume", vol);
     }
 
     public void QuitGame()
