@@ -1526,6 +1526,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be632231e8ba0f4986ff955693a17b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: 24300002, guid: b101add41b5a4344d8b8e2eb0afb4928, type: 2}
+  sounds:
+  - name: CanonFire
+    clip: {fileID: 8300000, guid: 4770db8f8a607e04fab3b10685860dfe, type: 3}
+    volume: 0.8
+    source: {fileID: 0}
+  - name: PlayerDamage
+    clip: {fileID: 8300000, guid: 9bb79ee6330b6a545b04d92f5e462895, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: PlayerWalking
+    clip: {fileID: 8300000, guid: 0435c5d028972fd45a8dcbdef5994dee, type: 3}
+    volume: 1
+    source: {fileID: 0}
 --- !u!82 &1433224203
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1539,7 +1553,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 3a5650d7bfc7c474da45373a0389b738, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0

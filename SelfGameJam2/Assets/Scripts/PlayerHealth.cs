@@ -31,6 +31,9 @@ public class PlayerHealth : MonoBehaviour
         {
             health--;
             healthImage.sprite = healthImages[health];
+
+            FindObjectOfType<AudioManager>().PlaySound("PlayerDamage");
+            Debug.Log("sound play hit");
         }
     }
 }
