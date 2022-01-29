@@ -1537,7 +1537,7 @@ MonoBehaviour:
     volume: 1
     source: {fileID: 0}
   - name: PlayerWalking
-    clip: {fileID: 8300000, guid: 0435c5d028972fd45a8dcbdef5994dee, type: 3}
+    clip: {fileID: 8300000, guid: dd537e673ed884a429e09d3014948b8f, type: 3}
     volume: 1
     source: {fileID: 0}
 --- !u!82 &1433224203

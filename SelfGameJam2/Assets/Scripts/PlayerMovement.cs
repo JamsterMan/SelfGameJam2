@@ -17,10 +17,14 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 movement;
 
+    private AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -29,16 +33,22 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal") * moveSpeed;
         movement.y = Input.GetAxisRaw("Vertical") * moveSpeed;
 
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
+        if (movement.x != 0 || movement.y != 0)
+        {
 
-        playerAnimator.SetFloat("Horizontal", movement.x);
-        playerAnimator.SetFloat("Vertical", movement.y);
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
 
-        Vector3 pos = transform.position;
+            playerAnimator.SetFloat("Horizontal", movement.x);
+            playerAnimator.SetFloat("Vertical", movement.y);
 
-        pos.x = Mathf.Clamp(pos.x, playerHorizontalLowerBound, playerHorizontalUpperBound);
-        pos.y = Mathf.Clamp(pos.y, playerVerticalLowerBound, playerVerticalUpperBound);
+            Vector3 pos = transform.position;
 
-        transform.position = pos;
+            pos.x = Mathf.Clamp(pos.x, playerHorizontalLowerBound, playerHorizontalUpperBound);
+            pos.y = Mathf.Clamp(pos.y, playerVerticalLowerBound, playerVerticalUpperBound);
+
+            transform.position = pos;
+
+            audioManager.PlaySound("PlayerWalking");
+        }
     }
 }
