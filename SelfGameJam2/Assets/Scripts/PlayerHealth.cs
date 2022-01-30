@@ -10,19 +10,12 @@ public class PlayerHealth : MonoBehaviour
 
     public Sprite[] healthImages;
 
+    private AudioManager audioManager;
+
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         healthImage.sprite = healthImages[healthImages.Length - 1];
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(health <= 0)
-        {
-            Debug.Log("GameOver");
-            Destroy(gameObject);
-        }
     }
 
     public void HitPlayer()
@@ -32,8 +25,15 @@ public class PlayerHealth : MonoBehaviour
             health--;
             healthImage.sprite = healthImages[health];
 
-            FindObjectOfType<AudioManager>().PlaySound("PlayerDamage");
+            audioManager.PlaySound("PlayerDamage");
             Debug.Log("sound play hit");
+        }
+
+        if (health <= 0)
+        {
+            Debug.Log("GameOver");
+            audioManager.PlaySound("Defeat");
+            Destroy(gameObject);
         }
     }
 }

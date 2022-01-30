@@ -2779,6 +2779,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: dd537e673ed884a429e09d3014948b8f, type: 3}
     volume: 0.8
     source: {fileID: 0}
+  - name: Victory
+    clip: {fileID: 8300000, guid: ae12b66f2979071409b7ba55fe606bd6, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Defeat
+    clip: {fileID: 8300000, guid: 2ea6bba97664b1241a6eeebbde96de50, type: 3}
+    volume: 1
+    source: {fileID: 0}
 --- !u!82 &1382832278
 AudioSource:
   m_ObjectHideFlags: 0
